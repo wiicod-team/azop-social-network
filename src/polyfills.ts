@@ -13,7 +13,18 @@
  *
  * Learn more in https://angular.io/guide/browser-support
  */
-
+(window as any).global=window;
+(window as any).process={
+    env:{
+            DEBUG:undefined
+        }
+};
+declare global{
+    interface window{
+        Buffer:any
+    }
+};
+window.buffer=window
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */

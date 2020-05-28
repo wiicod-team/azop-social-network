@@ -1,0 +1,32 @@
+ion-item{
+    // --background: #3880ff;
+    // --color: #fff;
+}
+
+ion-button{
+    // --background: #062f77;
+}
+a{
+    // text-decoration: none;
+    color: black;
+}
+.text{
+    margin: auto;
+    margin-top: 20px;
+}
+.error{
+    color: red;
+    text-align: center;
+}
+.error-container{
+    .error-message{
+        margin: calc(var(--page-margin)/2) 0px;
+        display: flex;
+        align-items: center;
+        color: var(--ion-color-danger);
+        font-size: 14px;
+        ion-icon{
+            padding-inline-end: calc(var(--page-margin)/2) ;
+        }
+    }
+}

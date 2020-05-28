@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Verification code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <form #form="ngForm" [formGroup]="codeForm" (ngSubmit)="verificationCode(form)">
+    <ion-grid>
+      <ion-row  justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <br>
+          <div padding>
+            <ion-item lines="full">
+              <ion-label position="floating">Phone number</ion-label>
+              <ion-input name="username" type="text" formControlName="username" required></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validation_messages.username">
+                <div class="error-message" *ngIf="codeForm.get('username').hasError(validation.type ) && (codeForm.get('username').dirty || codeForm.get('username').touched )" >
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span> {{validation.message}}</span>
+                </div>
+              </ng-container>
+            </div>
+
+            <ion-item lines="full">
+              <ion-label position="floating">Code</ion-label>
+              <ion-input name="code" type="text" formControlName="code" required></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validation_messages.code">
+                <div class="error-message" *ngIf="codeForm.get('code').hasError(validation.type ) && (codeForm.get('code').dirty || codeForm.get('code').touched )" >
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span> {{validation.message}}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <br>
+          <div padding>
+            <ion-button  size="large" type="submit"  [disabled]="form.invalid" expand="block">Send</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-grid>
+    <ion-row align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center class="text">
+            Please <a (click)="resend()">resend code !</a> 
+        </div>
+    </ion-row>
+    <ion-row align-self-center size-md="6" size-lg="5" size-xs="12" color="danger">
+      <div text-center class="text error">{{error}}</div>
+    </ion-row>
+  </ion-grid>
+</ion-content>
